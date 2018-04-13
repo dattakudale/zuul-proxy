@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: zuul-proxy
+  labels:
+    name: zuul-proxy
+    visualize: "true"
+spec:
+  ports:
+    - protocol: TCP
+      port: 8762
+      targetPort: 8762
+  selector:
+    name: zuul-proxy
+
+---
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: zuul-proxy
+  labels:
+    app: zuul-proxy
+    visualize: "true"
+spec:
+  strategy:
+    type: Recreate
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zuul-proxy
+  template:
+    metadata:
+      labels:
+        app: zuul-proxy
+        version: "v1"
+        visualize: "true"
+      annotations:
+        visualizer/uses: eureka-server       
+    spec:
+      containers:
+      - name: zuul-proxy
+        image: gcr.io/appsutility-141503/zuul-proxy:v1
+        imagePullPolicy: Always
+        resources:
+            requests:
+              memory: "128Mi"
+              cpu: "300m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"        
+        env:
+        - name: EUREKA_URI
+          value: http://eureka-server:8761
+        - name: SPRING_PROFILES_ACTIVE
+          value: cloud
+        ports:
+        - name: http
+          containerPort: 8762
