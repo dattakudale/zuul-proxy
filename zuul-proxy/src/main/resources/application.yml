@@ -1,0 +1,38 @@
+server:
+  port: 8762
+
+spring:
+  application:
+    name: zuul-proxy
+
+management:
+  security:
+    enabled: false
+security:
+  basic:
+    enabled: false
+
+---
+spring:
+  profiles: dev
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceurl:
+      defaultzone: ${EUREKA_URI:http://localhost:8761}/eureka
+      
+
+---
+
+spring:
+  profiles: cloud
+  
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceurl:
+      defaultzone: ${EUREKA_URI}/eureka  
