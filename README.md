@@ -34,7 +34,9 @@ kubectl create -f zuul-proxy-service.yaml
 kubectl set image deployment/zuul-proxy zuul-proxy=gcr.io/appsutility-141503/zuul-proxy:v2
 
 
+## Create multiple instances ( Replicas )   , below will create 3 instances of zuul proxy 
 
+kubectl scale deployment zuul-proxy --replicas=3
 
 
 
