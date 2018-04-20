@@ -1,10 +1,6 @@
 server:
   port: 8762
 
-spring:
-  application:
-    name: zuul-proxy
-
 management:
   security:
     enabled: false
