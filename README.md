@@ -25,7 +25,7 @@ gcloud docker -- push gcr.io/appsutility-141503/zuul-proxy:v1
 kubectl run zuul-proxy --image=gcr.io/appsutility-141503/zuul-proxy:v1
 
 
-## Deploy spring boot using Kubernet deployment file
+## Deploy spring boot using Kubernetes deployment file
 
 kubectl create -f zuul-proxy-service.yaml	
 
