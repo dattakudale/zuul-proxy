@@ -20,13 +20,12 @@ pipeline {
 	      }
     	}
     	
-    	post { 
-	        always { 
-	            echo 'Completed'
-	        }
-    	}
-    	
     }
      
+	post { 
+        always { 
+            echo 'Completed'
+        }
+	}     
     
 }
