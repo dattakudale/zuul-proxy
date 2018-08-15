@@ -19,6 +19,13 @@ pipeline {
 			    sh "docker tag zuul-proxy:${env.BUILD_ID} zuul-proxy:latest"
 	      }
     	}
+    	
+    	post { 
+	        always { 
+	            echo 'Completed'
+	        }
+    	}
+    	
     }
      
     
