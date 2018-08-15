@@ -5,7 +5,7 @@ pipeline {
     stages {
 	  
         stage('build') {
-	    agent { docker { image 'maven:latest' } }  	
+	    agent { docker { image 'maven:3.3.3' } }  	
 		
             steps {
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
