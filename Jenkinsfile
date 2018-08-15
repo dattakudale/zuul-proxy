@@ -1,6 +1,6 @@
 pipeline {
 	
-   agent any 
+   agent none
 	
     stages {
 	  
@@ -19,6 +19,7 @@ pipeline {
         }
         
         stage('Make Container') {
+            agent any
 		    steps {
 				sh "docker build -t zuul-proxy:${env.BUILD_ID} ."
 				sh "docker tag zuul-proxy:${env.BUILD_ID} zuul-proxy:latest"
