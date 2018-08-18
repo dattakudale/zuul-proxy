@@ -57,7 +57,8 @@ spec:
         ports:
         - name: http
           containerPort: 8762
-
+      imagePullSecrets:
+      - name: gcr.io  
           
 ---
 apiVersion: autoscaling/v1
