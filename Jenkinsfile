@@ -25,6 +25,14 @@ pipeline {
 				sh "docker tag zuul-proxy:${env.BUILD_ID} zuul-proxy:latest"
 		    }
 	    }
+	    
+	    stage('Building image') {
+		      steps{
+		        script {
+		          docker.build registry + ":$BUILD_NUMBER"
+		        }
+		      }
+    	}	
     	
     }
      
