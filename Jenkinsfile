@@ -23,15 +23,9 @@ pipeline {
 		    steps {
 				sh "docker build -t zuul-proxy:${env.BUILD_ID} ."
 				sh "docker tag zuul-proxy:${env.BUILD_ID} gcr.io/appsutility-141503/zuul-proxy:${env.BUILD_ID}"
-				
+				sh "gcloud docker -- push gcr.io/appsutility-141503/zuul-proxy:${env.BUILD_ID}"
 		    }
 	    }
-	    
-	    stage('Push image') {
-		      steps{
-		       	sh "gcloud docker -- push gcr.io/appsutility-141503/zuul-proxy:${env.BUILD_ID}"
-		      }
-    	}	
     	
     }
      
