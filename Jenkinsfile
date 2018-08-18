@@ -22,15 +22,14 @@ pipeline {
             agent any
 		    steps {
 				sh "docker build -t zuul-proxy:${env.BUILD_ID} ."
-				sh "docker tag zuul-proxy:${env.BUILD_ID} zuul-proxy:latest"
+				sh "docker tag zuul-proxy:${env.BUILD_ID} gcr.io/appsutility-141503/zuul-proxy:${env.BUILD_ID}"
+				
 		    }
 	    }
 	    
-	    stage('Building image') {
+	    stage('Push image') {
 		      steps{
-		        script {
-		          docker.build registry + ":$BUILD_NUMBER"
-		        }
+		       	sh "gcloud docker -- push gcr.io/appsutility-141503/zuul-proxy:${env.BUILD_ID}"
 		      }
     	}	
     	
