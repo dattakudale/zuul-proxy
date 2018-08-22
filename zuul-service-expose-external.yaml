@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: zuul-proxy-1
+spec:
+  selector:
+    app: zuul-proxy
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8762
+    targetPort: 8762
+  externalIPs:
+  - 178.128.157.108
