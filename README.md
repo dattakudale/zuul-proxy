@@ -1,4 +1,4 @@
-# zuul-proxy
+# zuul-proxy app
 
 
 ## Build with maven 
