@@ -8,6 +8,12 @@ security:
   basic:
     enabled: false
 
+spring:
+  application:
+    admin:
+      enabled: false
+  
+
 ---
 spring:
   profiles: dev
@@ -32,3 +38,9 @@ eureka:
     fetchRegistry: true
     serviceUrl:
       defaultZone: ${EUREKA_URI}/eureka  
+      
+zuul:
+  routes:
+    microservice: 
+      path: /batterycommon/**
+      serviceId: batterycommon
