@@ -78,7 +78,7 @@
 				<version>0.9.9</version>
 				<configuration>
 					<to>
-						<image>gcr.io/appsutility-141503/${artifactId}:${version}</image>
+						<image>gcr.io/apps-143/${artifactId}:${version}</image>
 					</to>
 				</configuration>
 			</plugin>
