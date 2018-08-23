@@ -71,6 +71,18 @@
 					<executable>true</executable>
 				</configuration>				
 			</plugin>
+			
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>0.9.9</version>
+				<configuration>
+					<to>
+						<image>gcr.io/appsutility-141503/${artifactId}:${version}</image>
+					</to>
+				</configuration>
+			</plugin>
+						
 		</plugins>
 	</build>
 
