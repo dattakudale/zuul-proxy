@@ -1,9 +1,21 @@
 server:
   port: 8762
 
+
+
+info:
+  app:
+    name: Zuul Proxy
+    description: Zuul Proxy spring boot application
+    version: 1.0.0
+
 management:
   security:
     enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 security:
   basic:
     enabled: false
@@ -11,8 +23,12 @@ security:
 spring:
   application:
     admin:
-      enabled: false
-  
+      enabled: true
+  zipkin:
+    base-url: http://localhost:9411/
+  sleuth:
+    sampler:
+      percentage: 1.0
 
 ---
 spring:
@@ -37,10 +53,4 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: ${EUREKA_URI}/eureka  
-      
-zuul:
-  routes:
-    microservice: 
-      path: /batterycommon/**
-      serviceId: batterycommon
+      defaultZone: ${EUREKA_URI}/eureka
