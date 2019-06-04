@@ -2,7 +2,6 @@ server:
   port: 8762
 
 
-
 info:
   app:
     name: Zuul Proxy
@@ -11,24 +10,26 @@ info:
 
 management:
   security:
-    enabled: false
+    enabled: true
   endpoints:
     web:
       exposure:
         include: "*"
+    logfile:
+      external-file: /tmp/zuul.log      
 security:
   basic:
     enabled: false
 
+spring.security.user.name: test
+spring.security.user.password: test
+
 spring:
-  application:
-    admin:
-      enabled: true
   zipkin:
     base-url: http://localhost:9411/
   sleuth:
     sampler:
-      percentage: 1.0
+      percentage: 1.0      
       
 ---
 spring:
@@ -40,7 +41,10 @@ eureka:
     fetchRegistry: true
     serviceUrl:
       defaultZone: ${EUREKA_URI:http://localhost:8761}/eureka
-      
+  instance:
+    metadata-map:
+      user.name: ${spring.security.user.name}
+      user.password: ${spring.security.user.password}      
 
 ---
 
@@ -53,4 +57,4 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: ${EUREKA_URI}/eureka
+      defaultZone: ${EUREKA_URI}/eureka        
