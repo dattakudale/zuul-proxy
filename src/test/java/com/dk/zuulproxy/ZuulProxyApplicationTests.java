@@ -1,4 +1,4 @@
-package com.dk.eurekaserver;
+package com.dk.zuulproxy;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

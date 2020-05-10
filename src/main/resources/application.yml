@@ -21,20 +21,23 @@ security:
   basic:
     enabled: false
 
+ribbon:
+  ConnectTimeout:  10000
+  ReadTimeout:  60000
+  eager-load:
+    enabled: true
+
 spring.security.user.name: test
 spring.security.user.password: test
 
 spring:
   zipkin:
-    base-url: http://zipkin-server
-    locator:
-      discovery:
-        enabled: true
+    base-url: http://zipkin-server:9411
   sleuth:
     web:
       skip-pattern: 
     sampler:
-      probability: 1.0   
+      probability: 1.0    
       
 ---
 spring:

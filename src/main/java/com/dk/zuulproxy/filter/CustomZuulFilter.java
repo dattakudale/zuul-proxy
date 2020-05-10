@@ -1,4 +1,4 @@
-package com.dk.eurekaserver.filter;
+package com.dk.zuulproxy.filter;
 
 import java.util.UUID;
 
